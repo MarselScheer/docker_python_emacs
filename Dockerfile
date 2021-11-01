@@ -33,12 +33,12 @@ RUN wget https://dvc.org/deb/dvc.list -O /etc/apt/sources.list.d/dvc.list \
 RUN useradd -m m
 USER m
 WORKDIR /home/m
+ENV DISPLAY=:0
+ENV PYTHONPATH=./src
 RUN mkdir -p /tmp/hostfs \
     && ln -s /tmp/hostfs \
     && ln -s /tmp/hostfs/.emacs.d \
     && ln -s /tmp/hostfs/.gitconfig \
-    && ln -s /tmp/hostfs/.ssh \
-    && echo "export DISPLAY=:0" > /home/m/.bashrc \
-    && echo "export PYTHONPATH=./src" >> /home/m/.bashrc 
+    && ln -s /tmp/hostfs/.ssh 
 
 CMD /bin/bash
