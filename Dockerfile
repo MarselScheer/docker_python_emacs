@@ -1,4 +1,4 @@
-FROM ubuntu:20.10
+FROM tensorflow/tensorflow:2.7.0-gpu
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Berlin
@@ -22,8 +22,7 @@ RUN apt-get update && apt-get install -y \
     && dpkg -i emacs-ng_0.0.a89eb3a_amd64.deb \
     && ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
     && ln -s /usr/bin/python3 /usr/bin/python \
-    && apt-get install -y npm \
-    && npm install -g pyright
+    && pip3 install pyright
 
 RUN wget https://dvc.org/deb/dvc.list -O /etc/apt/sources.list.d/dvc.list \
     && wget -qO - https://dvc.org/deb/iterative.asc | apt-key add - \
