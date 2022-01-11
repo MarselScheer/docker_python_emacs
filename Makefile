@@ -7,6 +7,12 @@ start: image
 	  -v /tmp/.X11-unix:/tmp/.X11-unix \
 	  $(IMAGE_NAME):$(IMAGE_VERSION)
 
+start-cpu: image
+	sudo docker run -i -t --rm \
+	  -v ~/docker_fs:/tmp/hostfs \
+	  -v /tmp/.X11-unix:/tmp/.X11-unix \
+	  $(IMAGE_NAME):$(IMAGE_VERSION)
+
 start-with-sshX: image
 	sudo docker run --gpus all -i -t --rm \
 	  --net=host \

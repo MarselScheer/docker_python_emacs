@@ -34,6 +34,7 @@ USER m
 WORKDIR /home/m
 ENV DISPLAY=:0
 ENV PYTHONPATH=./src
+ENV KAGGLE=False
 RUN mkdir -p /tmp/hostfs \
     && ln -s /tmp/hostfs \
     && ln -s /tmp/hostfs/.emacs.d \
