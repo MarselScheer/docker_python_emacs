@@ -29,6 +29,10 @@ RUN wget https://dvc.org/deb/dvc.list -O /etc/apt/sources.list.d/dvc.list \
     && apt update \
     && apt install dvc
 
+RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - \
+    && apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
+    && apt-get update && apt-get install -y terraform
+
 RUN useradd -m m
 USER m
 WORKDIR /home/m
